@@ -1,0 +1,13 @@
+{
+  "name": "blue-green-demo-v2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Green/canary version of the deployment demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

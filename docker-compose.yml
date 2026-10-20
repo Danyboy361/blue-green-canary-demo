@@ -1,0 +1,26 @@
+services:
+  v1:
+    build: ./app/v1
+    container_name: blue_v1
+    expose:
+      - "3001"
+    restart: unless-stopped
+
+  v2:
+    build: ./app/v2
+    container_name: green_v2
+    expose:
+      - "3002"
+    restart: unless-stopped
+
+  nginx:
+    build: ./nginx
+    container_name: deployment_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - v1
+      - v2
+    restart: unless-stopped
